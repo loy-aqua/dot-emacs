@@ -106,10 +106,14 @@
 (use-package counsel
   :diminish
   :after ivy
-  ;; :bind
-  ;; (("M-x" . counsel-M-x)
-  ;;  ("C-x C-f" . counsel-find-file))
+  :bind
+  ("C-x C-m" . counsel-M-x)
   :config (counsel-mode 1))
+
+(use-package avy
+  :after swiper
+  :bind (("C-;" . avy-goto-char)
+         ("C-'" . avy-goto-char-2)))
 
 
 ;; (use-package flycheck)
@@ -118,6 +122,14 @@
 (use-package markdown-mode
   :mode ("\\.markdown\\'" "\\.md\\'"))
 
+
+;; MMM mode lets you edit multiple languages within one buffer.
+;; (use-package mmm-mode
+;;   :commands mmm-mode
+;;   :config
+;;   (use-package mmm-auto
+;;     :after mmm-mode
+;;     :ensure nil))
 
 ;; A major mode for editing web templates.
 (use-package web-mode
@@ -132,6 +144,7 @@
   (setq web-mode-engines-alist
         '(("php"    . "\\.phtml\\'")
           ("ruby"  . "\\.erb\\."))))
+
 
 
 ;; feature that allows writing HTML using CSS selectors along with C-j 
@@ -162,12 +175,15 @@
   (lsp-mode . lsp-enable-which-key-integration)
   :commands lsp
   :config
-  (use-package company-lsp
-    :after lsp-mode
-    :config
-    (setq compnay-lsp-enable-snippet t)
-    (setq lsp-diagnostic-package :none)
-    (push 'company-lsp company-backends)))
+  (setq compnay-lsp-enable-snippet t)
+  (setq lsp-diagnostic-package :none))
+
+
+(use-package yari
+  :init
+  (add-hook 'ruby-mode-hook
+            (lambda ()
+              (local-set-key [f1] 'yari))))
 
 
 (use-package yaml-mode
@@ -175,8 +191,6 @@
   :bind ("C-m" . 'newline-and-indent))
 
 
-;; The function smarter-yas-expand-next-field-complete is
-;; to smartly resolve TAB conflicts in company and yasnippet packages.
 (use-package company
   :custom
   (company-minimum-prefix-length 1)
@@ -190,16 +204,14 @@
   ;; Number the candidates (use M-1, M-2 etc to select completions).
   (company-show-numbers t)
   :config
-  (global-company-mode 1)
-  ;;  (push 'company-robe company-backends)
-  )
+  (global-company-mode 1))
 
 
 (use-package yasnippet
   :demand t  
   :diminish yas-minor-mode
   :init
-  (use-package yasnippet-classic-snippets :after yasnippet )
+  (use-package yasnippet-snippets :after yasnippet )
   :bind (("C-c y d" . yas-load-directory)
          ("C-c y i" . yas-insert-snippet)
          ("C-c y f" . yas-visit-snippet-file)

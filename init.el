@@ -35,6 +35,7 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (global-set-key "\C-w" 'backward-kill-word)
+(global-set-key "\C-r" 'replace-string)
 (global-set-key "\M-o" 'other-window)
 
 ;; Auto C-k kill
@@ -103,7 +104,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (yasnippet-classic-snippets yasnippet yaml-mode company-lsp lsp-mode chruby rjsx-mode emmet-mode web-mode markdown-mode counsel swiper ivy magit rainbow-delimiters aggressive-indent smartparens expand-region google-this iedit hungry-delete undo-propose exec-path-from-shell which-key smart-mode-line minimal-theme use-package))))
+    (yari yasnippet-snippets yasnippet yaml-mode lsp-mode chruby rjsx-mode emmet-mode web-mode markdown-mode avy counsel swiper ivy magit rainbow-delimiters aggressive-indent smartparens expand-region google-this iedit hungry-delete undo-propose exec-path-from-shell which-key smart-mode-line minimal-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
