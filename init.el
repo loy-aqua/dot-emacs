@@ -58,14 +58,29 @@
 ;; Makes insert newlines if the point is at the end of the buffer.
 (setq next-line-add-newlines t)
 
-;; Save all tempfiles in $TMPDIR/emacs$UID/                                                        
-(defconst emacs-tmp-dir (expand-file-name (format "emacs%d" (user-uid)) temporary-file-directory))
-(setq backup-directory-alist
-      `((".*" . ,emacs-tmp-dir)))
-(setq auto-save-file-name-transforms
-      `((".*" ,emacs-tmp-dir t)))
-(setq auto-save-list-file-prefix
-      emacs-tmp-dir)
+
+;; Stop backup & creating those #auto-save# files
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+
+(add-to-list 'load-path "~/.emacs.d/config")
+
+;; Auto-save from
+;; https://github.com/manateelazycat/auto-save/blob/master/auto-save.el
+(require 'auto-save)
+(auto-save-enable)
+(setq auto-save-silent t)   ; quietly save
+(setq auto-save-delete-trailing-whitespace t)  ; automatically delete spaces at the end of the line when saving
+
+;;; custom predicates if you don't want auto save.
+;;; disable auto save mode when current filetype is an gpg file.
+(setq auto-save-disable-predicates
+      '((lambda ()
+          (string-suffix-p
+           "gpg"
+           (file-name-extension (buffer-name)) t))))
+
+;; (setq auto-save-visited-file-name t)
 
 
 ;; Auto-login for sql-postgres
@@ -84,7 +99,7 @@
 (setq package-archives '(
                          ("melpa" . "http://melpa.org/packages/")
                          ("gnu" . "http://elpa.gnu.org/packages/")
-                         ("org" . "http://orgmode.org/elpa/")
+                         ;; ("org" . "http://orgmode.org/elpa/")
                          ))
 (setq use-package-always-ensure t)
 (package-initialize)
@@ -92,11 +107,12 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(add-to-list 'load-path "~/.emacs.d/config")
+
 (require 'main)
-;; (require 'org-config)
+
 
 ;;; init.el ends here
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -104,7 +120,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (yari yasnippet-snippets yasnippet yaml-mode lsp-mode chruby rjsx-mode emmet-mode web-mode markdown-mode avy counsel swiper ivy magit rainbow-delimiters aggressive-indent smartparens expand-region google-this iedit hungry-delete undo-propose exec-path-from-shell which-key smart-mode-line minimal-theme use-package))))
+    (yasnippet-snippets yasnippet company yaml-mode yari lsp-mode chruby rjsx-mode emmet-mode web-mode markdown-mode avy counsel swiper ivy magit rainbow-delimiters aggressive-indent smartparens expand-region google-this iedit hungry-delete undo-propose exec-path-from-shell which-key smart-mode-line minimal-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

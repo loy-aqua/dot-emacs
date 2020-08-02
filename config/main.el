@@ -12,6 +12,12 @@
   (setq sml/no-confirm-load-theme t)
   (sml/setup))
 
+;;
+;; Auto-saves your buffers
+;; (use-package real-auto-save
+;;   :hook (prog-mode-hook . real-auto-save-mode)
+;;   :config
+;;   (setq real-auto-save-interval 1)) ;; in seconds
 
 ;; A feature that displays the key bindings following the incomplete command.
 (use-package which-key
@@ -107,11 +113,12 @@
   :diminish
   :after ivy
   :bind
-  ("C-x C-m" . counsel-M-x)
+  (("C-x C-m" . counsel-M-x)
+   :map ivy-minibuffer-map
+   ("C-m" . ivy-alt-done))
   :config (counsel-mode 1))
 
 (use-package avy
-  :after swiper
   :bind (("C-;" . avy-goto-char)
          ("C-'" . avy-goto-char-2)))
 
@@ -147,7 +154,7 @@
 
 
 
-;; feature that allows writing HTML using CSS selectors along with C-j 
+;; feature that allows writing HTML using CSS selectors along with C-j
 (use-package emmet-mode
   :hook ((web-mode css-mode html-mode sgml-mode) . emmet-mode))
 
@@ -176,7 +183,7 @@
   :commands lsp
   :config
   (setq compnay-lsp-enable-snippet t)
-  (setq lsp-diagnostic-package :none))
+  (setq lsp-diagnostic-package :project))
 
 
 (use-package yari
@@ -208,7 +215,7 @@
 
 
 (use-package yasnippet
-  :demand t  
+  :demand t
   :diminish yas-minor-mode
   :init
   (use-package yasnippet-snippets :after yasnippet )
