@@ -86,6 +86,8 @@
   :bind (("C-x g" . magit-status)
          ("C-x G" . magit-status-with-prefix)))
 
+;; (use-package dumb-jump
+;;   :hook ((emacs-lisp-mode ruby-mode) . dumb-jump-mode))
 
 (use-package projectile
   :defer 5

@@ -95,17 +95,23 @@
 
 ;; Bootstrap use-package
 (require 'package)
-(setq package-enable-at-startup nil)
-(setq package-archives '(
-                         ("melpa" . "https://melpa.org/packages/")
-                         ("gnu" . "https://elpa.gnu.org/packages/")
-                         ;; ("org" . "https://orgmode.org/elpa/")
-                         ))
-(setq use-package-always-ensure t)
-(package-initialize)
+
+(setq package-archives
+      '(("gnu" . "https://elpa.gnu.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")
+        ;; ("org" . "https://orgmode.org/elpa/")
+        ))
+
+(unless (bound-and-true-p package--initialized)
+  (setq package-enable-at-startup nil) ;; To prevent initializing twice
+  (package-initialize))
+
+;; Install use-package if not installed
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+
+(setq use-package-always-ensure t)
 
 
 (require 'main)
@@ -119,7 +125,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (counsel-projectile projectile yasnippet-snippets yari yaml-mode which-key web-mode use-package undo-propose smartparens smart-mode-line rjsx-mode rainbow-delimiters minimal-theme magit lsp-mode iedit hungry-delete google-this expand-region exec-path-from-shell emmet-mode counsel company chruby avy aggressive-indent))))
+    (yasnippet-snippets yasnippet company yaml-mode yari lsp-mode chruby rjsx-mode emmet-mode web-mode markdown-mode avy counsel-projectile counsel swiper ivy projectile magit rainbow-delimiters aggressive-indent smartparens expand-region google-this iedit hungry-delete undo-propose exec-path-from-shell which-key smart-mode-line minimal-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
