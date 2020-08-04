@@ -87,6 +87,17 @@
          ("C-x G" . magit-status-with-prefix)))
 
 
+(use-package projectile
+  :defer 5
+  :diminish
+  ;; :bind* (("C-c TAB" . projectile-find-other-file)
+  ;;         ("C-c P" . (lambda () (interactive)
+  ;;                      (projectile-cleanup-known-projects)
+  ;;                      (projectile-discover-projects-in-search-path))))
+  :bind-keymap ("M-p" . projectile-command-map)
+  :config
+  (projectile-global-mode))
+
 
 ;; Ivy, a generic completion mechanism.
 (use-package ivy
@@ -114,9 +125,15 @@
   :after ivy
   :bind
   (("C-x C-m" . counsel-M-x)
+   ("C-x C-o" . counsel-recentf)
    :map ivy-minibuffer-map
    ("C-m" . ivy-alt-done))
   :config (counsel-mode 1))
+
+(use-package counsel-projectile
+  :config
+  (counsel-projectile-mode 1))
+
 
 (use-package avy
   :bind (("C-;" . avy-goto-char)
@@ -173,6 +190,11 @@
 ;;   :commands smart-newline-mode
 ;;   :config
 ;;   (smart-newline-mode 1))
+
+;; (use-package projectile-rails
+;;   :bind-keymap ("C-c r" . projectile-rails-command-map)
+;;   :config
+;;   (projectile-rails-global-mode))
 
 ;; gem 'solargraph'
 (use-package lsp-mode

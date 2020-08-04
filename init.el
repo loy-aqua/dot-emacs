@@ -39,7 +39,7 @@
 (global-set-key "\M-o" 'other-window)
 
 ;; Auto C-k kill
-(defun kill-line-or-region () 
+(defun kill-line-or-region ()
   "Kill region if active only or kill line normally."
   (interactive)
   (if (use-region-p)
@@ -97,9 +97,9 @@
 (require 'package)
 (setq package-enable-at-startup nil)
 (setq package-archives '(
-                         ("melpa" . "http://melpa.org/packages/")
-                         ("gnu" . "http://elpa.gnu.org/packages/")
-                         ;; ("org" . "http://orgmode.org/elpa/")
+                         ("melpa" . "https://melpa.org/packages/")
+                         ("gnu" . "https://elpa.gnu.org/packages/")
+                         ;; ("org" . "https://orgmode.org/elpa/")
                          ))
 (setq use-package-always-ensure t)
 (package-initialize)
@@ -112,7 +112,6 @@
 
 
 ;;; init.el ends here
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -120,7 +119,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (yasnippet-snippets yasnippet company yaml-mode yari lsp-mode chruby rjsx-mode emmet-mode web-mode markdown-mode avy counsel swiper ivy magit rainbow-delimiters aggressive-indent smartparens expand-region google-this iedit hungry-delete undo-propose exec-path-from-shell which-key smart-mode-line minimal-theme use-package))))
+    (counsel-projectile projectile yasnippet-snippets yari yaml-mode which-key web-mode use-package undo-propose smartparens smart-mode-line rjsx-mode rainbow-delimiters minimal-theme magit lsp-mode iedit hungry-delete google-this expand-region exec-path-from-shell emmet-mode counsel company chruby avy aggressive-indent))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
