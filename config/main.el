@@ -86,9 +86,6 @@
   :bind (("C-x g" . magit-status)
          ("C-x G" . magit-status-with-prefix)))
 
-;; (use-package dumb-jump
-;;   :hook ((emacs-lisp-mode ruby-mode) . dumb-jump-mode))
-
 (use-package projectile
   :defer 5
   :diminish
@@ -128,6 +125,7 @@
   :bind
   (("C-x C-m" . counsel-M-x)
    ("C-x C-o" . counsel-recentf)
+   ("C-x C-a" . counsel-ag)
    :map ivy-minibuffer-map
    ("C-m" . ivy-alt-done))
   :config (counsel-mode 1))
@@ -198,16 +196,23 @@
 ;;   :config
 ;;   (projectile-rails-global-mode))
 
-;; gem 'solargraph'
-(use-package lsp-mode
-  :hook
-  (ruby-mode . lsp)
-  ;; if you want which-key integration
-  (lsp-mode . lsp-enable-which-key-integration)
-  :commands lsp
+
+;; gem install solargraph
+(use-package eglot
+  :commands eglot
   :config
-  (setq compnay-lsp-enable-snippet t)
-  (setq lsp-diagnostic-package :project))
+  (setq eglot-ignored-server-capabilites '(:documentHighlightProvider)
+        eglot--mode-line-format "LSP")
+  (advice-add 'eglot-eldoc-function :around
+              (lambda (oldfun)
+                (let ((help (help-at-pt-kbd-string)))
+                  (if help (message "%s" help) (funcall oldfun)))))
+  ;; Automatically recognizes xxx-language-server
+  :hook ((ruby-mode . eglot-ensure))
+  ;; (ruby-mode . (lambda () (flycheck-mode -1))))
+  :bind (:map eglot-mode-map
+              ("C-c h" . eglot-help-at-point)))
+
 
 
 (use-package yari
