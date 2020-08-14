@@ -123,9 +123,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("4780d7ce6e5491e2c1190082f7fe0f812707fc77455616ab6f8b38e796cbffa9" "3e335d794ed3030fefd0dbd7ff2d3555e29481fe4bbb0106ea11c660d6001767" default))
  '(package-selected-packages
-   (quote
-    (counsel-etags eglot vterm yasnippet-snippets yasnippet company yaml-mode yari lsp-mode chruby emmet-mode web-mode markdown-mode avy counsel-projectile counsel swiper ivy projectile magit rainbow-delimiters aggressive-indent smartparens expand-region google-this iedit hungry-delete undo-propose exec-path-from-shell which-key smart-mode-line minimal-theme use-package))))
+   '(git-timemachine counsel-etags eglot vterm yasnippet-snippets yasnippet company yaml-mode yari lsp-mode chruby emmet-mode web-mode markdown-mode avy counsel-projectile counsel swiper ivy projectile magit rainbow-delimiters aggressive-indent smartparens expand-region google-this iedit hungry-delete undo-propose exec-path-from-shell which-key smart-mode-line minimal-theme use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

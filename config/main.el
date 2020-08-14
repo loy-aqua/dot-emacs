@@ -1,10 +1,6 @@
-;; (use-package eziam-dark-theme
-;;   :ensure eziam-theme
-;;   :defer t
-;;   :init (load-theme 'eziam-dark t))
 (use-package minimal-theme
   :defer t
-  :init (load-theme 'minimal t))
+  :init (load-theme 'minimal-black t))
 
 (use-package smart-mode-line
   :config
@@ -12,12 +8,6 @@
   (setq sml/no-confirm-load-theme t)
   (sml/setup))
 
-;;
-;; Auto-saves your buffers
-;; (use-package real-auto-save
-;;   :hook (prog-mode-hook . real-auto-save-mode)
-;;   :config
-;;   (setq real-auto-save-interval 1)) ;; in seconds
 
 ;; A feature that displays the key bindings following the incomplete command.
 (use-package which-key
@@ -96,6 +86,8 @@
   :bind-keymap ("M-p" . projectile-command-map)
   :config
   (projectile-global-mode))
+
+(use-package git-timemachine)
 
 
 ;; Ivy, a generic completion mechanism.
