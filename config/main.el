@@ -1,12 +1,21 @@
 (use-package minimal-theme
   :defer t
-  :init (load-theme 'minimal-black t))
+  :init (load-theme 'minimal t))
+;; (set-cursor-color "red")
 
 (use-package smart-mode-line
   :config
   (setq sml/theme 'dark)
   (setq sml/no-confirm-load-theme t)
   (sml/setup))
+
+;; Automatically update Emacs packages.
+(use-package auto-package-update
+  :ensure t
+  :config
+  (setq auto-package-update-delete-old-versions t
+        auto-package-update-interval 4)
+  (auto-package-update-maybe))
 
 
 ;; A feature that displays the key bindings following the incomplete command.
@@ -72,6 +81,7 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
+
 (use-package magit
   :bind (("C-x g" . magit-status)
          ("C-x G" . magit-status-with-prefix)))
@@ -117,7 +127,7 @@
   :bind
   (("C-x C-m" . counsel-M-x)
    ("C-x C-o" . counsel-recentf)
-   ("C-x C-a" . counsel-ag)
+   ("C-x C-]" . counsel-rg)
    :map ivy-minibuffer-map
    ("C-m" . ivy-alt-done))
   :config (counsel-mode 1))
@@ -126,22 +136,22 @@
   :config
   (counsel-projectile-mode 1))
 
-(use-package counsel-etags
-  :ensure t
-  :bind (("C-]" . counsel-etags-find-tag-at-point))
-  :init
-  (add-hook 'prog-mode-hook
-            (lambda ()
-              (add-hook 'after-save-hook
-                        'counsel-etags-virtual-update-tags 'append 'local)))
-  :config
-  (setq counsel-etags-update-interval 60)
-  (push "build" counsel-etags-ignore-directories))
+;; (use-package counsel-etags
+;;   :ensure t
+;;   :bind (("C-]" . counsel-etags-find-tag-at-point))
+;;   :init
+;;   (add-hook 'prog-mode-hook
+;;             (lambda ()
+;;               (add-hook 'after-save-hook
+;;                         'counsel-etags-virtual-update-tags 'append 'local)))
+;;   :config
+;;   (setq counsel-etags-update-interval 60)
+;;   (push "build" counsel-etags-ignore-directories))
 
 
 (use-package avy
   :bind (("C-;" . avy-goto-char)
-         ("C-'" . avy-goto-char-2)))
+         ("C-'" . avy-goto-line)))
 
 
 ;; (use-package flycheck)
@@ -186,12 +196,6 @@
 (use-package chruby
   :config (chruby "ruby-2.6.6"))
 
-;; (use-package smart-newline
-;;   :diminish
-;;   :commands smart-newline-mode
-;;   :config
-;;   (smart-newline-mode 1))
-
 ;; (use-package projectile-rails
 ;;   :bind-keymap ("C-c r" . projectile-rails-command-map)
 ;;   :config
@@ -199,6 +203,8 @@
 
 
 ;; gem install solargraph
+;; solargraph config
+;; solargraph bundle
 (use-package eglot
   :commands eglot
   :config
