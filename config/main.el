@@ -149,6 +149,13 @@
 ;;   (push "build" counsel-etags-ignore-directories))
 
 
+(use-package ivy-explorer
+  :after ivy
+  :config
+  ;; use ivy explorer for all file dialogs
+  (ivy-explorer-mode 1))
+
+
 (use-package avy
   :bind (("C-;" . avy-goto-char)
          ("C-'" . avy-goto-line)))
