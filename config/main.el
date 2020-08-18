@@ -34,8 +34,9 @@
   (exec-path-from-shell-initialize))
 
 
-(use-package undo-propose
-  :commands undo-propose)
+;; "C-x u" undo-tree-visualizer
+(use-package undo-tree
+  :config (global-undo-tree-mode))
 
 
 ;; Deleting all whitespace until the next non-whitespace character
