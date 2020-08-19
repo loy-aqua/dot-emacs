@@ -4,15 +4,11 @@
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (display-graphic-p)
     (progn
-      ;; (setq-default cursor-type 'hollow)
       (setq default-frame-alist
-            '(
-              ;; (font . "Iosevka-14")
-              (font . "Monofur Nerd Font Mono-16")
+            '((font . "Iosevka-15")
               (top . 0) (left . 1100)
               (width . 110)
-              (height . 70)
-              ))
+              (height . 70)))
       (set-fontset-font "fontset-default" 'han (font-spec :family "FZQingKeBenYueSongS-R-GB" :size 14))
       (setq frame-title-format
             '(:eval (if (buffer-file-name)
@@ -37,6 +33,7 @@
 (display-time-mode 1)
 ;; (display-battery-mode 1)
 
+(fset 'yes-or-no-p 'y-or-n-p)
 
 (global-set-key [f5] 'toggle-frame-fullscreen)
 (global-set-key [f10] 'toggle-frame-maximized)
@@ -131,7 +128,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("4780d7ce6e5491e2c1190082f7fe0f812707fc77455616ab6f8b38e796cbffa9" "3e335d794ed3030fefd0dbd7ff2d3555e29481fe4bbb0106ea11c660d6001767" default))
+   '("37768a79b479684b0756dec7c0fc7652082910c37d8863c35b702db3f16000f8" "4780d7ce6e5491e2c1190082f7fe0f812707fc77455616ab6f8b38e796cbffa9" "3e335d794ed3030fefd0dbd7ff2d3555e29481fe4bbb0106ea11c660d6001767" default))
  '(package-selected-packages
    '(geiser undo-tree ivy-explorer git-timemachine counsel-etags eglot vterm yasnippet-snippets yasnippet company yaml-mode yari lsp-mode emmet-mode web-mode markdown-mode avy counsel-projectile counsel swiper ivy projectile magit rainbow-delimiters aggressive-indent smartparens expand-region google-this iedit hungry-delete exec-path-from-shell which-key smart-mode-line minimal-theme use-package)))
 (custom-set-faces

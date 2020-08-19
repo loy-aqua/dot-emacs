@@ -1,7 +1,6 @@
 (use-package minimal-theme
   :defer t
   :init (load-theme 'minimal t))
-;; (set-cursor-color "red")
 
 (use-package smart-mode-line
   :config
@@ -87,6 +86,10 @@
   :bind (("C-x g" . magit-status)
          ("C-x G" . magit-status-with-prefix)))
 
+(use-package git-timemachine
+  :bind (("C-c g" . git-timemachine)))
+
+
 (use-package projectile
   :defer 5
   :diminish
@@ -98,7 +101,6 @@
   :config
   (projectile-global-mode))
 
-(use-package git-timemachine)
 
 
 ;; Ivy, a generic completion mechanism.
