@@ -237,6 +237,13 @@
               (local-set-key [f1] 'yari))))
 
 
+(setq scheme-program-name "chez")
+(use-package geiser
+  :init (setq geiser-active-implementations '(chez))
+  :config (setq geiser-chez-binary "chez"))
+
+
+
 (use-package yaml-mode
   :mode ("\\.yml\\'")
   :bind ("C-m" . 'newline-and-indent))

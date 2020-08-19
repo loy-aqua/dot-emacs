@@ -6,10 +6,12 @@
     (progn
       ;; (setq-default cursor-type 'hollow)
       (setq default-frame-alist
-            '((font . "Iosevka Term-14")
+            '(
+              ;; (font . "Iosevka-14")
+              (font . "Monofur Nerd Font Mono-16")
               (top . 0) (left . 1100)
-              (width . 120)
-              (height . 60)
+              (width . 110)
+              (height . 70)
               ))
       (set-fontset-font "fontset-default" 'han (font-spec :family "FZQingKeBenYueSongS-R-GB" :size 14))
       (setq frame-title-format
@@ -35,8 +37,6 @@
 (display-time-mode 1)
 ;; (display-battery-mode 1)
 
-
-(fset 'yes-or-no-p 'y-or-n-p)
 
 (global-set-key [f5] 'toggle-frame-fullscreen)
 (global-set-key [f10] 'toggle-frame-maximized)
@@ -133,7 +133,7 @@
  '(custom-safe-themes
    '("4780d7ce6e5491e2c1190082f7fe0f812707fc77455616ab6f8b38e796cbffa9" "3e335d794ed3030fefd0dbd7ff2d3555e29481fe4bbb0106ea11c660d6001767" default))
  '(package-selected-packages
-   '(undo-tree ivy-explorer git-timemachine counsel-etags eglot vterm yasnippet-snippets yasnippet company yaml-mode yari lsp-mode emmet-mode web-mode markdown-mode avy counsel-projectile counsel swiper ivy projectile magit rainbow-delimiters aggressive-indent smartparens expand-region google-this iedit hungry-delete exec-path-from-shell which-key smart-mode-line minimal-theme use-package)))
+   '(geiser undo-tree ivy-explorer git-timemachine counsel-etags eglot vterm yasnippet-snippets yasnippet company yaml-mode yari lsp-mode emmet-mode web-mode markdown-mode avy counsel-projectile counsel swiper ivy projectile magit rainbow-delimiters aggressive-indent smartparens expand-region google-this iedit hungry-delete exec-path-from-shell which-key smart-mode-line minimal-theme use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
