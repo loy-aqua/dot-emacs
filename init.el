@@ -5,7 +5,9 @@
 (if (display-graphic-p)
     (progn
       (setq default-frame-alist
-            '((font . "Iosevka-15")
+            '(
+              (font . "Iosevka-14")
+              ;; (font . "Monoid-12")
               (top . 0) (left . 1100)
               (width . 110)
               (height . 70)))
@@ -32,6 +34,21 @@
 (which-function-mode t)
 (display-time-mode 1)
 ;; (display-battery-mode 1)
+
+
+;; native line numbers
+(line-number-mode -1)
+(add-hook 'prog-mode-hook #'display-line-numbers-mode)
+(setq-default display-line-numbers-current-absolute t
+              display-line-numbers-width 1
+              display-line-numbers-widen t)
+(set-face-attribute 'line-number nil
+                    :font "Iosevka Term")
+(set-face-attribute 'line-number-current-line nil
+                    :font "Iosevka Term Bold"
+                    :foreground "yellow")
+
+
 
 (fset 'yes-or-no-p 'y-or-n-p)
 

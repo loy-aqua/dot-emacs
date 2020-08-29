@@ -130,7 +130,7 @@
   :bind
   (("C-x C-m" . counsel-M-x)
    ("C-x C-o" . counsel-recentf)
-   ("C-x C-]" . counsel-rg)
+   ("C-x C-a" . counsel-rg)
    :map ivy-minibuffer-map
    ("C-m" . ivy-alt-done))
   :config (counsel-mode 1))
@@ -204,7 +204,7 @@
 ;; Ruby on Rails
 ;; -------------
 (use-package chruby
-  :config (chruby "ruby-2.6.6"))
+  :config (chruby "ruby-2.7.1"))
 
 ;; (use-package projectile-rails
 ;;   :bind-keymap ("C-c r" . projectile-rails-command-map)
