@@ -5,26 +5,18 @@
 (if (display-graphic-p)
     (progn
       (setq default-frame-alist
-            '(
-              (font . "Iosevka-14")
-              ;; (font . "Monoid-12")
-              (top . 0) (left . 1100)
-              (width . 110)
-              (height . 70)))
+            '((top . 0) (left . 1100) (width . 110) (height . 70)))
+      (set-face-attribute 'default nil :height 150 :weight 'Light :family "Iosevka Slab")
       (set-fontset-font "fontset-default" 'han (font-spec :family "FZQingKeBenYueSongS-R-GB" :size 14))
       (setq frame-title-format
             '(:eval (if (buffer-file-name)
-                        (abbreviate-file-name (buffer-file-name)) "%b")))
-      ;; (set-frame-parameter (car (frame-list)) 'undecorated t)
-      ))
-
+                        (abbreviate-file-name (buffer-file-name)) "%b")))))
 
 (setq-default
  bookmark-default-file (expand-file-name ".bookmarks.el" user-emacs-directory)
  indent-tabs-mode nil
  visible-bell t
  vc-handled-backends nil)
-
 
 (global-auto-revert-mode t)
 (save-place-mode 1)
@@ -34,7 +26,6 @@
 (which-function-mode t)
 (display-time-mode 1)
 ;; (display-battery-mode 1)
-
 
 ;; native line numbers
 (line-number-mode -1)
@@ -47,8 +38,6 @@
 (set-face-attribute 'line-number-current-line nil
                     :font "Iosevka Term Bold"
                     :foreground "yellow")
-
-
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -78,11 +67,9 @@
 ;; Makes insert newlines if the point is at the end of the buffer.
 (setq next-line-add-newlines t)
 
-
 ;; Stop backup & creating those #auto-save# files
 (setq make-backup-files nil)
 (setq auto-save-default nil)
-
 
 (add-to-list 'load-path "~/.emacs.d/config")
 
@@ -103,7 +90,6 @@
 
 ;; (setq auto-save-visited-file-name t)
 
-
 ;; Auto-login for sql-postgres
 ;; Change to your own params
 (setq sql-postgres-login-params
@@ -111,7 +97,6 @@
         (database :default "postgres")
         (server :default "localhost")
         (port :default 5432)))
-
 
 
 ;; Bootstrap use-package
