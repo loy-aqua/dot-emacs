@@ -5,9 +5,9 @@
 (if (display-graphic-p)
     (progn
       (setq default-frame-alist
-            '((top . 0) (left . 1100) (width . 110) (height . 70)))
-      (set-face-attribute 'default nil :height 150 :weight 'Light :family "Iosevka Slab")
-      (set-fontset-font "fontset-default" 'han (font-spec :family "FZQingKeBenYueSongS-R-GB" :size 14))
+            '((top . 0) (left . 1100) (width . 100) (height . 70)))
+      (set-face-attribute 'default nil :height 150 :family "Iosevka")
+      (set-fontset-font "fontset-default" 'han (font-spec :family "Songti SC"))
       (setq frame-title-format
             '(:eval (if (buffer-file-name)
                         (abbreviate-file-name (buffer-file-name)) "%b")))))
@@ -33,11 +33,8 @@
 (setq-default display-line-numbers-current-absolute t
               display-line-numbers-width 1
               display-line-numbers-widen t)
-(set-face-attribute 'line-number nil
-                    :font "Iosevka Term")
 (set-face-attribute 'line-number-current-line nil
-                    :font "Iosevka Term Bold"
-                    :foreground "yellow")
+                    :foreground "orange")
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -132,7 +129,7 @@
  '(custom-safe-themes
    '("37768a79b479684b0756dec7c0fc7652082910c37d8863c35b702db3f16000f8" "4780d7ce6e5491e2c1190082f7fe0f812707fc77455616ab6f8b38e796cbffa9" "3e335d794ed3030fefd0dbd7ff2d3555e29481fe4bbb0106ea11c660d6001767" default))
  '(package-selected-packages
-   '(geiser undo-tree ivy-explorer git-timemachine counsel-etags eglot vterm yasnippet-snippets yasnippet company yaml-mode yari lsp-mode emmet-mode web-mode markdown-mode avy counsel-projectile counsel swiper ivy projectile magit rainbow-delimiters aggressive-indent smartparens expand-region google-this iedit hungry-delete exec-path-from-shell which-key smart-mode-line minimal-theme use-package)))
+   '(nord-theme geiser undo-tree ivy-explorer git-timemachine counsel-etags eglot vterm yasnippet-snippets yasnippet company yaml-mode yari lsp-mode emmet-mode web-mode markdown-mode avy counsel-projectile counsel swiper ivy projectile magit rainbow-delimiters aggressive-indent smartparens expand-region google-this iedit hungry-delete exec-path-from-shell which-key smart-mode-line minimal-theme use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

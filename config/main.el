@@ -1,10 +1,14 @@
 (use-package minimal-theme
   :defer t
-  :init (load-theme 'minimal t))
+  :init (load-theme 'minimal-light t))
+
+;; (use-package nord-theme
+;;   :defer t
+;;   :init (load-theme 'nord t))
 
 (use-package smart-mode-line
   :config
-  (setq sml/theme 'dark)
+  (setq sml/theme 'light)
   (setq sml/no-confirm-load-theme t)
   (sml/setup))
 
@@ -198,6 +202,28 @@
 ;; feature that allows writing HTML using CSS selectors along with C-j
 (use-package emmet-mode
   :hook ((web-mode css-mode html-mode sgml-mode) . emmet-mode))
+
+
+;; Javascript
+;; npm install -g typescript
+;; npm install -g standardx
+(defun setup-tide-mode ()
+  "Setup function for tide."
+  (interactive)
+  (tide-setup)
+  ;; (flycheck-mode +1)
+  ;; (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  (company-mode +1))
+
+(use-package tide
+  :hook ((js-mode . setup-tide-mode)
+         (typescript-mode . setup-tide-mode)
+         (typescript-mode . tide-hl-identifier-mode)
+         (before-save . tide-format-before-save))
+  :config
+  (setq company-tooltip-align-annotations t))
 
 
 
